@@ -368,11 +368,12 @@ function initLibrary()
             Parent = topbar
         })
 
-        local glow = utility.create("Frame", {
-    Size = UDim2.new(1, 6, 1, 6), -- Slightly larger than main
-    Position = UDim2.new(0, -3, 0, -3), -- Offset to create the glow effect
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- White glow (adjust as needed)
-    BackgroundTransparency = 0.8, -- Semi-transparent for glow effect
+        -- Create a glow effect using a slightly larger frame
+local glow = utility.create("Frame", {
+    Size = UDim2.new(1, 6, 1, 6), -- Slightly larger
+    Position = UDim2.new(0, -3, 0, -3), -- Offset outward
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- White glow
+    BackgroundTransparency = 0.8, -- Soft glow effect
     Parent = main
 })
 
@@ -387,10 +388,28 @@ local gradient = utility.create("UIGradient", {
 
 -- Apply a UIStroke for an inner glow effect
 local stroke = utility.create("UIStroke", {
-    Color = Color3.fromRGB(255, 255, 255), -- White stroke
+    Color = Color3.fromRGB(255, 255, 255),
     Thickness = 2,
-    Transparency = 0.6, -- Make it semi-transparent
+    Transparency = 0.6,
     Parent = main
+})
+
+-- 🌑 Add a Drop Shadow Effect
+local shadow = utility.create("Frame", {
+    Size = UDim2.new(1, 10, 1, 10), -- Larger than glow
+    Position = UDim2.new(0, -5, 0, -5), -- Offset more than glow
+    BackgroundColor3 = Color3.fromRGB(0, 0, 0), -- Black shadow
+    BackgroundTransparency = 0.9, -- Almost fully transparent
+    Parent = main
+})
+
+-- Blur effect for smooth shadow
+local shadowGradient = utility.create("UIGradient", {
+    Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)), -- Black center
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0, 0)) -- Fades to transparent
+    },
+    Parent = shadow
 })
 
         local tabs = utility.create("Frame", {
