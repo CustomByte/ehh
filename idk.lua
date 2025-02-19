@@ -370,48 +370,21 @@ function initLibrary()
             Parent = topbar
         })
 
-        -- Create a glow effect using a slightly larger frame
-local glow = utility.create("Frame", {
-    Size = UDim2.new(1, 6, 1, 6), -- Slightly larger
-    Position = UDim2.new(0, -3, 0, -3), -- Offset outward
-    BackgroundColor3 = Color3.fromRGB(255, 255, 255), -- White glow
-    BackgroundTransparency = 0.8, -- Soft glow effect
-    Parent = main
+        local blurStroke = utility.create("UIStroke", {
+    ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual, -- Applies to edges only
+    Thickness = 2, -- Adjust thickness for effect intensity
+    Transparency = 0.7, -- Semi-transparent for a soft blur look
+    Color = Color3.fromRGB(255, 255, 255), -- Light color to simulate blur effect
+    Parent = topbar
 })
 
--- Apply a UIGradient for a smooth fade effect
-local gradient = utility.create("UIGradient", {
+-- Create UIGradient to soften edges further
+local blurGradient = utility.create("UIGradient", {
     Color = ColorSequence.new{
         ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 100, 100))
     },
-    Parent = glow
-})
-
--- Apply a UIStroke for an inner glow effect
-local stroke = utility.create("UIStroke", {
-    Color = Color3.fromRGB(255, 255, 255),
-    Thickness = 2,
-    Transparency = 0.6,
-    Parent = main
-})
-
--- 🌑 Add a Drop Shadow Effect
-local shadow = utility.create("Frame", {
-    Size = UDim2.new(1, 10, 1, 10), -- Larger than glow
-    Position = UDim2.new(0, -5, 0, -5), -- Offset more than glow
-    BackgroundColor3 = Color3.fromRGB(0, 0, 0), -- Black shadow
-    BackgroundTransparency = 0.9, -- Almost fully transparent
-    Parent = main
-})
-
--- Blur effect for smooth shadow
-local shadowGradient = utility.create("UIGradient", {
-    Color = ColorSequence.new{
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)), -- Black center
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0, 0)) -- Fades to transparent
-    },
-    Parent = shadow
+    Parent = topbar
 })
 
         local tabs = utility.create("Frame", {
