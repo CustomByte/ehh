@@ -375,7 +375,7 @@ function initLibrary()
     Thickness = 2, -- Adjust thickness for effect intensity
     Transparency = 0.7, -- Semi-transparent for a soft blur look
     Color = Color3.fromRGB(255, 255, 255), -- Light color to simulate blur effect
-    Parent = topbar
+    Parent = main
 })
 
 -- Create UIGradient to soften edges further
@@ -384,7 +384,7 @@ local blurGradient = utility.create("UIGradient", {
         ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
         ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 100, 100))
     },
-    Parent = topbar
+    Parent = main
 })
 
         local tabs = utility.create("Frame", {
