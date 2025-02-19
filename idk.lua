@@ -348,18 +348,20 @@ function initLibrary()
 
 
         utility.create("TextLabel", {
-            ZIndex = 3,
-            Size = UDim2.new(0, 0, 1, 0),
-            BackgroundTransparency = 1,
-            Position = UDim2.new(0, 8, 0, 0),
-            FontSize = Enum.FontSize.Size14,
-            TextSize = 14,
-            TextColor3 = Color3.fromRGB(255, 255, 255),
-            Text = name,
-            Font = Enum.Font.GothamSemibold,
-            TextXAlignment = Enum.TextXAlignment.Left,
-            Parent = topbar
-        })
+    ZIndex = 3,
+    Size = UDim2.new(0, 0, 1, 0), -- Height fills topbar, width auto
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0.5, 0, 0, 0), -- Center in the X direction
+    AnchorPoint = Vector2.new(0.5, 0), -- Ensures the center is at 50% of topbar
+    FontSize = Enum.FontSize.Size14,
+    TextSize = 14,
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    Text = name,
+    Font = Enum.Font.GothamSemibold,
+    TextXAlignment = Enum.TextXAlignment.Center, -- Align text centrally
+    Parent = topbar
+})
+
         
         local main = utility.create("Frame", {
             Size = UDim2.new(1, 0, 0, sizeY),
